@@ -1,0 +1,254 @@
+.news {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.news-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.news-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.news-header p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+}
+
+.news-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* No news state */
+.no-news {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.no-news h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #667eea;
+}
+
+.no-news p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* News list */
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.news-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  animation: slideIn 0.6s ease-out;
+}
+
+.news-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.news-item.positive {
+  border-left: 4px solid #00ff88;
+}
+
+.news-item.negative {
+  border-left: 4px solid #ff4757;
+}
+
+.news-item.neutral {
+  border-left: 4px solid #ffa502;
+}
+
+.news-header-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.news-impact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.impact-icon {
+  font-size: 20px;
+}
+
+.impact-label {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.5px;
+}
+
+.news-time {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.news-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: white;
+  line-height: 1.4;
+}
+
+.affected-cryptos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.affected-cryptos .label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.crypto-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.crypto-tag {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid currentColor;
+}
+
+/* Market Insights */
+.market-insights {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.market-insights h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #667eea;
+  text-align: center;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.insight-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.insight-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.insight-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #ffa502;
+}
+
+.insight-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.insight-card li {
+  padding: 8px 0;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 20px;
+}
+
+.insight-card li::before {
+  content: '•';
+  color: #667eea;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .news-header h1 {
+    font-size: 24px;
+  }
+
+  .news-item {
+    padding: 20px;
+  }
+
+  .news-header-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .news-title {
+    font-size: 18px;
+  }
+
+  .insights-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .market-insights {
+    padding: 20px;
+  }
+
+  .affected-cryptos {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

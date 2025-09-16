@@ -1,28 +1,51 @@
+import React from 'react';
+import { GameProvider, useGame } from './context/GameContext';
+import Navigation from './components/Navigation';
+import Dashboard from './components/Dashboard';
+import Market from './components/Market';
+import News from './components/News';
+import Achievements from './components/Achievements';
+import WelcomeScreen from './components/WelcomeScreen';
 import './App.css';
+
+function GameContent() {
+  const { state } = useGame();
+  const { currentView, gameStarted } = state;
+
+  if (!gameStarted) {
+    return <WelcomeScreen />;
+  }
+
+  const renderCurrentView = () => {
+    switch (currentView) {
+      case 'dashboard':
+        return <Dashboard />;
+      case 'market':
+        return <Market />;
+      case 'news':
+        return <News />;
+      case 'achievements':
+        return <Achievements />;
+      default:
+        return <Dashboard />;
+    }
+  };
+
+  return (
+    <div className="app">
+      <Navigation />
+      <main className="main-content">
+        {renderCurrentView()}
+      </main>
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
+    <GameProvider>
+      <GameContent />
+    </GameProvider>
   );
 }
 
