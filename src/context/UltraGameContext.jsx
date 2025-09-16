@@ -856,7 +856,156 @@ function ultraGameReducer(state, action) {
         }
       };
     
-    // ... (include all other existing actions from EnhancedGameContext)
+    case 'BUY_CRYPTO':
+      const { cryptoId: buyCryptoId, amount: buyAmount, leverage: buyLeverage = 1 } = action.payload;
+      const buyCrypto = state.cryptos[buyCryptoId];
+      const totalCost = buyAmount * buyCrypto.price;
+      
+      if (totalCost > state.player.cash) return state;
+      
+      const existingHolding = state.portfolio[buyCryptoId] || { amount: 0, avgBuyPrice: 0, leverage: 1 };
+      const newTotalAmount = existingHolding.amount + buyAmount;
+      const newAvgPrice = ((existingHolding.amount * existingHolding.avgBuyPrice) + (buyAmount * buyCrypto.price)) / newTotalAmount;
+      
+      const transaction = {
+        id: Date.now(),
+        type: 'buy',
+        cryptoId: buyCryptoId,
+        amount: buyAmount,
+        price: buyCrypto.price,
+        total: totalCost,
+        timestamp: Date.now(),
+        leverage: buyLeverage
+      };
+      
+      return {
+        ...state,
+        portfolio: {
+          ...state.portfolio,
+          [buyCryptoId]: {
+            amount: newTotalAmount,
+            avgBuyPrice: newAvgPrice,
+            leverage: buyLeverage
+          }
+        },
+        player: {
+          ...state.player,
+          cash: state.player.cash - totalCost,
+          tradesCount: state.player.tradesCount + 1
+        },
+        transactions: [transaction, ...state.transactions.slice(0, 99)]
+      };
+    
+    case 'SELL_CRYPTO':
+      const { cryptoId: sellCryptoId, amount: sellAmount } = action.payload;
+      const sellCrypto = state.cryptos[sellCryptoId];
+      const holding = state.portfolio[sellCryptoId];
+      
+      if (!holding || sellAmount > holding.amount) return state;
+      
+      const sellValue = sellAmount * sellCrypto.price * holding.leverage;
+      const fee = sellValue * 0.001; // 0.1% trading fee
+      const netValue = sellValue - fee;
+      
+      const sellTransaction = {
+        id: Date.now(),
+        type: 'sell',
+        cryptoId: sellCryptoId,
+        amount: sellAmount,
+        price: sellCrypto.price,
+        total: netValue,
+        timestamp: Date.now(),
+        leverage: holding.leverage
+      };
+      
+      const updatedPortfolio = { ...state.portfolio };
+      if (sellAmount === holding.amount) {
+        delete updatedPortfolio[sellCryptoId];
+      } else {
+        updatedPortfolio[sellCryptoId] = {
+          ...holding,
+          amount: holding.amount - sellAmount
+        };
+      }
+      
+      return {
+        ...state,
+        portfolio: updatedPortfolio,
+        player: {
+          ...state.player,
+          cash: state.player.cash + netValue,
+          tradesCount: state.player.tradesCount + 1
+        },
+        transactions: [sellTransaction, ...state.transactions.slice(0, 99)]
+      };
+    
+    case 'STAKE_CRYPTO':
+      const { cryptoId: stakeCryptoId, amount: stakeAmount } = action.payload;
+      const stakeCrypto = state.cryptos[stakeCryptoId];
+      
+      if (!stakeCrypto.canStake) return state;
+      
+      const stakeHolding = state.portfolio[stakeCryptoId];
+      if (!stakeHolding || stakeAmount > stakeHolding.amount) return state;
+      
+      const existingStake = state.stakedPortfolio[stakeCryptoId] || { amount: 0, startTime: Date.now(), rewards: 0 };
+      
+      const updatedStakePortfolio = {
+        ...state.stakedPortfolio,
+        [stakeCryptoId]: {
+          amount: existingStake.amount + stakeAmount,
+          startTime: existingStake.startTime || Date.now(),
+          rewards: existingStake.rewards
+        }
+      };
+      
+      const updatedPortfolioForStake = { ...state.portfolio };
+      if (stakeAmount === stakeHolding.amount) {
+        delete updatedPortfolioForStake[stakeCryptoId];
+      } else {
+        updatedPortfolioForStake[stakeCryptoId] = {
+          ...stakeHolding,
+          amount: stakeHolding.amount - stakeAmount
+        };
+      }
+      
+      return {
+        ...state,
+        portfolio: updatedPortfolioForStake,
+        stakedPortfolio: updatedStakePortfolio
+      };
+    
+    case 'UNSTAKE_CRYPTO':
+      const { cryptoId: unstakeCryptoId, amount: unstakeAmount } = action.payload;
+      const unstakeStake = state.stakedPortfolio[unstakeCryptoId];
+      
+      if (!unstakeStake || unstakeAmount > unstakeStake.amount) return state;
+      
+      const unstakeHolding = state.portfolio[unstakeCryptoId] || { amount: 0, avgBuyPrice: state.cryptos[unstakeCryptoId].price, leverage: 1 };
+      
+      const updatedUnstakePortfolio = {
+        ...state.portfolio,
+        [unstakeCryptoId]: {
+          ...unstakeHolding,
+          amount: unstakeHolding.amount + unstakeAmount
+        }
+      };
+      
+      const updatedUnstakeStaked = { ...state.stakedPortfolio };
+      if (unstakeAmount === unstakeStake.amount) {
+        delete updatedUnstakeStaked[unstakeCryptoId];
+      } else {
+        updatedUnstakeStaked[unstakeCryptoId] = {
+          ...unstakeStake,
+          amount: unstakeStake.amount - unstakeAmount
+        };
+      }
+      
+      return {
+        ...state,
+        portfolio: updatedUnstakePortfolio,
+        stakedPortfolio: updatedUnstakeStaked
+      };
     
     default:
       return state;
@@ -950,7 +1099,15 @@ export function GameProvider({ children }) {
   const value = {
     state,
     dispatch,
-    // ... (include all existing methods plus new ones)
+    startGame: () => {
+      dispatch({ type: 'START_GAME' });
+    },
+    setView: (view) => {
+      dispatch({ type: 'SET_VIEW', payload: view });
+    },
+    updateSettings: (settings) => {
+      dispatch({ type: 'UPDATE_SETTINGS', payload: settings });
+    },
     deployTradingBot: (botId, investment) => {
       dispatch({ type: 'DEPLOY_TRADING_BOT', payload: { botId, investment } });
     },
@@ -971,6 +1128,18 @@ export function GameProvider({ children }) {
     },
     sellNFT: (nftKey, sellPrice) => {
       dispatch({ type: 'SELL_NFT', payload: { nftKey, sellPrice } });
+    },
+    buyCrypto: (cryptoId, amount, leverage = 1) => {
+      dispatch({ type: 'BUY_CRYPTO', payload: { cryptoId, amount, leverage } });
+    },
+    sellCrypto: (cryptoId, amount) => {
+      dispatch({ type: 'SELL_CRYPTO', payload: { cryptoId, amount } });
+    },
+    stakeCrypto: (cryptoId, amount) => {
+      dispatch({ type: 'STAKE_CRYPTO', payload: { cryptoId, amount } });
+    },
+    unstakeCrypto: (cryptoId, amount) => {
+      dispatch({ type: 'UNSTAKE_CRYPTO', payload: { cryptoId, amount } });
     }
   };
 
