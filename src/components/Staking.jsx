@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGame } from '../context/EnhancedGameContext';
+import { useGame } from '../context/UltraGameContext';
 import './Staking.css';
 
 function Staking() {

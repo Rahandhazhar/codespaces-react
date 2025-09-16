@@ -1,0 +1,706 @@
+.defi-hub {
+  animation: fadeIn 0.6s ease-out;
+  padding: 20px;
+}
+
+.defi-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.defi-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.defi-stats {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.defi-stats .stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.defi-stats .label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.defi-stats .value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00ff88;
+}
+
+/* Tabs */
+.defi-tabs {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.defi-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Pool Sections */
+.user-pools-section h2,
+.available-pools-section h2 {
+  margin-bottom: 25px;
+  color: #667eea;
+  font-size: 24px;
+}
+
+.pools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.pool-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 25px;
+  backdrop-filter: blur(15px);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pool-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.pool-card:hover::before {
+  left: 100%;
+}
+
+.pool-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.pool-card.user-pool {
+  border-color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+}
+
+.pool-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pool-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pool-name {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.pool-apy {
+  font-size: 24px;
+  font-weight: 700;
+  color: #00ff88;
+}
+
+.pool-status {
+  display: flex;
+  align-items: center;
+}
+
+.status-active {
+  padding: 6px 12px;
+  background: rgba(0, 255, 136, 0.2);
+  color: #00ff88;
+  border: 1px solid #00ff88;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: pulse 2s infinite;
+}
+
+.pool-icon {
+  font-size: 32px;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+/* Pool Stats */
+.pool-stats {
+  margin-bottom: 20px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-row:last-child {
+  border-bottom: none;
+}
+
+.stat-row .label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.stat-row .value {
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+}
+
+/* Pool Details */
+.pool-details {
+  margin-bottom: 20px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row .label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.detail-row .value {
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+}
+
+/* Pool Features */
+.pool-features {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.feature-icon {
+  font-size: 16px;
+}
+
+/* Pool Actions */
+.pool-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.add-liquidity-btn,
+.remove-liquidity-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.add-liquidity-btn {
+  background: linear-gradient(135deg, #00ff88 0%, #00d4aa 100%);
+  color: #0c0c0c;
+}
+
+.remove-liquidity-btn {
+  background: linear-gradient(135deg, #ffa502 0%, #ff8c00 100%);
+  color: white;
+}
+
+.add-liquidity-btn:hover,
+.remove-liquidity-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Liquidity Panel */
+.liquidity-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #667eea;
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.liquidity-panel h2 {
+  margin-bottom: 25px;
+  color: #667eea;
+  font-size: 24px;
+  text-align: center;
+}
+
+.panel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.crypto-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.crypto-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.crypto-symbol {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.crypto-price {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.apy-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.apy-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.apy-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00ff88;
+}
+
+.amount-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.amount-input label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+}
+
+.amount-input input {
+  padding: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-radius: 10px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.amount-input input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+.amount-helpers {
+  display: flex;
+  gap: 10px;
+}
+
+.amount-helpers button {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.amount-helpers button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.liquidity-summary {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.panel-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.provide-liquidity-btn,
+.cancel-btn {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.provide-liquidity-btn {
+  background: linear-gradient(135deg, #00ff88 0%, #00d4aa 100%);
+  color: #0c0c0c;
+}
+
+.cancel-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.provide-liquidity-btn:hover,
+.cancel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.provide-liquidity-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Pool Summary */
+.pool-summary {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pool-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pool-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+
+.pool-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #00ff88;
+}
+
+/* Percentage Selector */
+.percentage-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.percentage-selector label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+}
+
+.percentage-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.percentage-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.percentage-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.percentage-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.percentage-buttons button {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.percentage-buttons button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.removal-summary {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Coming Soon Sections */
+.lending-section,
+.yield-section,
+.governance-section {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.lending-section h2,
+.yield-section h2,
+.governance-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #667eea;
+}
+
+.coming-soon {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.feature-preview {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 40px;
+  backdrop-filter: blur(15px);
+}
+
+.feature-preview h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #ffa502;
+}
+
+.feature-preview ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.feature-preview li {
+  padding: 12px 0;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-preview li:hover {
+  color: white;
+  padding-left: 10px;
+}
+
+.feature-preview li:last-child {
+  border-bottom: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .defi-hub {
+    padding: 15px;
+  }
+
+  .defi-header h1 {
+    font-size: 24px;
+  }
+
+  .defi-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .defi-tabs {
+    flex-direction: column;
+  }
+
+  .pools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pool-card {
+    padding: 20px;
+  }
+
+  .liquidity-panel {
+    padding: 20px;
+  }
+
+  .crypto-info {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .apy-display {
+    align-items: center;
+  }
+
+  .amount-helpers {
+    flex-direction: column;
+  }
+
+  .panel-actions {
+    flex-direction: column;
+  }
+
+  .percentage-buttons {
+    flex-direction: column;
+  }
+
+  .feature-preview {
+    padding: 25px;
+  }
+}

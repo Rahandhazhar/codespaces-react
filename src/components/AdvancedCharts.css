@@ -1,0 +1,583 @@
+.advanced-charts {
+  animation: fadeIn 0.6s ease-out;
+  padding: 20px;
+}
+
+.charts-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.charts-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chart-controls {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.crypto-selector {
+  min-width: 200px;
+}
+
+.crypto-select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.crypto-select:focus {
+  outline: none;
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+.crypto-select option {
+  background: #1a1a2e;
+  color: white;
+}
+
+.timeframe-selector {
+  display: flex;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.timeframe-btn {
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.timeframe-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.timeframe-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.chart-type-selector {
+  display: flex;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chart-type-btn {
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.chart-type-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.chart-type-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+/* Chart Info */
+.chart-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.crypto-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.crypto-symbol {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.crypto-name {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.price-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.current-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+}
+
+.price-change {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.market-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Chart Container */
+.chart-container {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 25px;
+  backdrop-filter: blur(15px);
+  margin-bottom: 30px;
+}
+
+.main-chart {
+  margin-bottom: 20px;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.chart-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.indicator-toggles {
+  display: flex;
+  gap: 15px;
+}
+
+.indicator-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-toggle:hover {
+  color: white;
+}
+
+.indicator-toggle input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #667eea;
+}
+
+.chart-area {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.price-chart-svg,
+.volume-chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Volume Chart */
+.volume-chart {
+  margin-bottom: 20px;
+}
+
+.volume-chart .chart-area {
+  height: 120px;
+}
+
+/* Indicators Panel */
+.indicators-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.indicator-chart {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.indicator-chart .chart-header {
+  margin-bottom: 10px;
+}
+
+.indicator-chart h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.indicator-value {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rsi-chart,
+.macd-chart {
+  height: 100px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rsi-chart svg,
+.macd-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Chart Analysis */
+.chart-analysis {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(15px);
+}
+
+.chart-analysis h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #667eea;
+  text-align: center;
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.analysis-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.analysis-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.analysis-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #ffa502;
+}
+
+.analysis-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.metric:last-child {
+  border-bottom: none;
+}
+
+.metric .label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.metric .value {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.signal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.signal-name {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.signal-value {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.signal-value.positive {
+  background: rgba(0, 255, 136, 0.2);
+  color: #00ff88;
+}
+
+.signal-value.negative {
+  background: rgba(255, 71, 87, 0.2);
+  color: #ff4757;
+}
+
+.signal-value.neutral {
+  background: rgba(255, 165, 2, 0.2);
+  color: #ffa502;
+}
+
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.suggestion {
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-left: 4px solid;
+}
+
+.suggestion.positive {
+  background: rgba(0, 255, 136, 0.1);
+  border-left-color: #00ff88;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.suggestion.negative {
+  background: rgba(255, 71, 87, 0.1);
+  border-left-color: #ff4757;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.suggestion.neutral {
+  background: rgba(255, 165, 2, 0.1);
+  border-left-color: #ffa502;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .chart-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .timeframe-selector,
+  .chart-type-selector {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .advanced-charts {
+    padding: 15px;
+  }
+
+  .charts-header h1 {
+    font-size: 24px;
+  }
+
+  .chart-info {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .crypto-info {
+    justify-content: center;
+  }
+
+  .market-info {
+    align-items: center;
+  }
+
+  .chart-container {
+    padding: 15px;
+  }
+
+  .chart-header {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .indicator-toggles {
+    justify-content: center;
+  }
+
+  .indicators-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-analysis {
+    padding: 20px;
+  }
+
+  .timeframe-selector,
+  .chart-type-selector {
+    flex-wrap: wrap;
+  }
+
+  .timeframe-btn,
+  .chart-type-btn {
+    flex: 1;
+    min-width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-controls {
+    gap: 10px;
+  }
+
+  .crypto-select {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .timeframe-btn,
+  .chart-type-btn {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .current-price {
+    font-size: 20px;
+  }
+
+  .price-change {
+    font-size: 14px;
+  }
+
+  .chart-container {
+    padding: 10px;
+  }
+
+  .analysis-card {
+    padding: 15px;
+  }
+}
+
+/* Animation for chart elements */
+@keyframes chartFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chart-area {
+  animation: chartFadeIn 0.6s ease-out;
+}
+
+/* Hover effects for interactive elements */
+.price-chart-svg rect:hover,
+.volume-chart-svg rect:hover {
+  opacity: 0.8;
+  filter: brightness(1.2);
+}
+
+/* Gradient overlays for depth */
+.chart-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  pointer-events: none;
+  border-radius: 8px;
+}

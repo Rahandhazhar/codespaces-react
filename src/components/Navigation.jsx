@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGame } from '../context/EnhancedGameContext';
+import { useGame } from '../context/UltraGameContext';
 import './Navigation.css';
 
 function Navigation() {
@@ -23,9 +23,13 @@ function Navigation() {
     { id: 'dashboard', label: 'Dashboard', icon: '📊', shortcut: 'D' },
     { id: 'market', label: 'Market', icon: '💹', shortcut: 'M' },
     { id: 'advanced-trading', label: 'Advanced Trading', icon: '🚀', shortcut: 'T' },
+    { id: 'charts', label: 'Advanced Charts', icon: '📈', shortcut: 'H' },
+    { id: 'ai-bots', label: 'AI Trading Bots', icon: '🤖', shortcut: 'B' },
+    { id: 'defi', label: 'DeFi Hub', icon: '🏦', shortcut: 'F' },
+    { id: 'mining', label: 'Mining Center', icon: '⛏️', shortcut: 'I' },
     { id: 'staking', label: 'Staking', icon: '💎', shortcut: 'S' },
     { id: 'challenges', label: 'Challenges', icon: '🎯', shortcut: 'C', badge: `${completedChallenges}/${totalChallenges}` },
-    { id: 'analytics', label: 'Analytics', icon: '📈', shortcut: 'P' },
+    { id: 'analytics', label: 'Analytics', icon: '📊', shortcut: 'P' },
     { id: 'news', label: 'News', icon: '📰', shortcut: 'N' },
     { id: 'achievements', label: 'Achievements', icon: '🏆', shortcut: 'A', badge: unlockedAchievements > 0 ? unlockedAchievements : null },
     { id: 'settings', label: 'Settings', icon: '⚙️', shortcut: 'ESC' }
