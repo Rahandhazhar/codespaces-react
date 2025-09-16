@@ -1,0 +1,602 @@
+.advanced-trading {
+  animation: fadeIn 0.6s ease-out;
+  padding: 20px;
+}
+
+.trading-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.trading-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.market-sentiment {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.market-sentiment .label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sentiment {
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sentiment.bullish {
+  background: rgba(0, 255, 136, 0.2);
+  color: #00ff88;
+}
+
+.sentiment.bearish {
+  background: rgba(255, 71, 87, 0.2);
+  color: #ff4757;
+}
+
+.sentiment.neutral {
+  background: rgba(255, 165, 2, 0.2);
+  color: #ffa502;
+}
+
+.trading-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Crypto Analysis Grid */
+.crypto-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.crypto-analysis-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.crypto-analysis-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.crypto-analysis-card.selected {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+.crypto-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.crypto-name {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.symbol {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.name {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.crypto-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+/* Technical Indicators */
+.technical-indicators {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+}
+
+.indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.indicator .label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.indicator .value {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.indicator .value.oversold {
+  color: #00ff88;
+}
+
+.indicator .value.overbought {
+  color: #ff4757;
+}
+
+.indicator .value.neutral {
+  color: #ffa502;
+}
+
+.indicator .value.positive {
+  color: #00ff88;
+}
+
+.indicator .value.negative {
+  color: #ff4757;
+}
+
+.signal {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.crypto-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.change {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.volume {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.holdings {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.staking-reward {
+  font-size: 12px;
+  color: #00ff88;
+  font-weight: 600;
+}
+
+.price-chart {
+  height: 60px;
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* Advanced Trading Panel */
+.advanced-trading-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.advanced-trading-panel h2 {
+  margin-bottom: 25px;
+  color: #667eea;
+  font-size: 20px;
+  text-align: center;
+}
+
+.trading-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Order Type Selector */
+.order-type-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-type-selector label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+}
+
+.order-type-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.order-type-btn {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.order-type-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.order-type-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+}
+
+/* Trade Type Selector */
+.trade-type-selector {
+  display: flex;
+  gap: 10px;
+}
+
+.trade-type-btn {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.trade-type-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.trade-type-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+}
+
+/* Leverage Selector */
+.leverage-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leverage-selector label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+}
+
+.leverage-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.leverage-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.leverage-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.leverage-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.risk-level {
+  font-weight: 600;
+}
+
+.max-leverage {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Amount Input */
+.amount-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.amount-input label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.amount-input input {
+  padding: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.amount-input input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.amount-helpers {
+  display: flex;
+  gap: 8px;
+}
+
+.amount-helpers button {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.amount-helpers button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Limit Price Input */
+.limit-price-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.limit-price-input label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.limit-price-input input {
+  padding: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.limit-price-input input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Risk Management */
+.risk-management {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.stop-loss-input,
+.take-profit-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stop-loss-input label,
+.take-profit-input label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+}
+
+.stop-loss-input input,
+.take-profit-input input {
+  padding: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.stop-loss-input input:focus,
+.take-profit-input input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Trade Summary */
+.trade-summary {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-row span:first-child {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.summary-row span:last-child {
+  font-weight: 600;
+  color: white;
+}
+
+.summary-row.warning {
+  color: #ffa502;
+}
+
+.summary-row.warning span {
+  color: #ffa502;
+}
+
+/* Advanced Trade Button */
+.advanced-trade-btn {
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.advanced-trade-btn.buy {
+  background: linear-gradient(135deg, #00ff88 0%, #00d4aa 100%);
+  color: #0c0c0c;
+}
+
+.advanced-trade-btn.sell {
+  background: linear-gradient(135deg, #ff4757 0%, #ff3742 100%);
+  color: white;
+}
+
+.advanced-trade-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.advanced-trade-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .advanced-trading {
+    padding: 15px;
+  }
+
+  .trading-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .trading-header h1 {
+    font-size: 24px;
+  }
+
+  .crypto-analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .crypto-analysis-card {
+    padding: 15px;
+  }
+
+  .advanced-trading-panel {
+    padding: 20px;
+  }
+
+  .order-type-buttons {
+    flex-direction: column;
+  }
+
+  .risk-management {
+    grid-template-columns: 1fr;
+  }
+}

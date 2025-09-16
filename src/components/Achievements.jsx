@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGame } from '../context/GameContext';
+import { useGame } from '../context/EnhancedGameContext';
 import './Achievements.css';
 
 function Achievements() {

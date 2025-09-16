@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useGame } from '../context/GameContext';
+import { useGame } from '../context/EnhancedGameContext';
 import './Market.css';
 
 function Market() {
